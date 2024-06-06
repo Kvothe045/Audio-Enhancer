@@ -20,7 +20,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-input[type="file"] {
+input[type="file"],
+select {
     display: block;
     margin: 10px auto;
 }
@@ -41,4 +42,9 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+ul {
+    color: red;
+    list-style-type: none;
 }

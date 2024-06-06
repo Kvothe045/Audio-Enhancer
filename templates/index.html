@@ -9,9 +9,24 @@
 <body>
     <div class="container">
         <h1>Audio Enhancer</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="file">Upload file:</label>
             <input type="file" id="file" name="file" required>
+            <label for="enhancement_type">Select enhancement type:</label>
+            <select id="enhancement_type" name="enhancement_type">
+                <option value="music">Music</option>
+                <option value="podcast">Podcast</option>
+                <option value="movie">Movie/Other</option>
+            </select>
             <button type="submit">Enhance</button>
         </form>
     </div>

@@ -51,21 +51,44 @@ def enhance_audio(y, sr):
 
     return y_final
 
-def enhance_audio_file(file_path):
-    if file_path.lower().endswith(('.mp4', '.mkv', '.avi', '.mov')):
-        audio_path = extract_audio_from_video(file_path)
-        if audio_path is None:
-            raise ValueError("No audio track found in the video file.")
-    else:
-        audio_path = file_path
+def music_audio_enhancer(audio_input):
+    y, sr = librosa.load(audio_input)
 
-    y, sr = librosa.load(audio_path)
+    # Enhance the bass frequencies
+    y_bass_enhanced = bass_boost(y, sr)
 
-    # Enhance the audio
-    y_enhanced = enhance_audio(y, sr)
+    # Apply common enhancements
+    y_final = enhance_audio(y_bass_enhanced, sr)
 
     # Save the enhanced audio
-    enhanced_file_path = os.path.join('enhanced', os.path.basename(audio_path))
-    sf.write(enhanced_file_path, y_enhanced, sr)
+    enhanced_file_path = os.path.join('enhanced', os.path.basename(audio_input))
+    sf.write(enhanced_file_path, y_final, sr)
 
+    print(f"Enhanced audio saved as: {enhanced_file_path}")
+    return enhanced_file_path
+
+def podcast_audio_enhancer(audio_input):
+    y, sr = librosa.load(audio_input)
+
+    # Apply common enhancements
+    y_final = enhance_audio(y, sr)
+
+    # Save the enhanced audio
+    enhanced_file_path = os.path.join('enhanced', os.path.basename(audio_input))
+    sf.write(enhanced_file_path, y_final, sr)
+
+    print(f"Enhanced audio saved as: {enhanced_file_path}")
+    return enhanced_file_path
+
+def movie_and_other_audio_enhancer(audio_input):
+    y, sr = librosa.load(audio_input)
+
+    # Apply common enhancements
+    y_final = enhance_audio(y, sr)
+
+    # Save the enhanced audio
+    enhanced_file_path = os.path.join('enhanced', os.path.basename(audio_input))
+    sf.write(enhanced_file_path, y_final, sr)
+
+    print(f"Enhanced audio saved as: {enhanced_file_path}")
     return enhanced_file_path
