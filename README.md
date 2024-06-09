@@ -40,11 +40,3 @@ To get started with SoundVision, follow these simple steps:
    ```
    python app.py
    ```
-
-## Features
-
-- Enhance audio quality: SoundVision employs advanced algorithms to enhance the quality of audio, making it clearer and more enjoyable.
-- Compatibility: SoundVision works with various audio and video formats, ensuring versatility in usage.
-- Easy to use: With a simple command-line interface, SoundVision is user-friendly and accessible to all levels of users.
-- Real-time processing: Users can experience enhanced audio quality in real-time, without the need for lengthy processing times.
-
