@@ -1,0 +1,4 @@
+Flask
+numpy
+scipy
+#use latest version, will work fine
